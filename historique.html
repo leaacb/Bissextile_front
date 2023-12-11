@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Historique</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&family=Montserrat:wght@200&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const historyTable = document.getElementById("history-table");
+
+            function getHistory() {
+                const xhr = new XMLHttpRequest();
+                xhr.open("GET", 'http://127.0.0.1:8000/api/historique', true);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            const response = JSON.parse(xhr.responseText);
+                            updateHistoryTable(response);
+                        }
+                    }
+                };
+
+                xhr.send();
+            }
+
+            function updateHistoryTable(history) {
+                //réinitialise le tableau
+                historyTable.innerHTML = '';
+
+                // Crée le tableau
+                const headerRow = document.createElement("tr");
+                const headerEndpoint = document.createElement("th");
+                headerEndpoint.textContent = "Endpoint";
+                const headerResult = document.createElement("th");
+                headerResult.textContent = "Resultat";
+                const headerDate = document.createElement("th");
+                headerDate.textContent = "Date";
+                headerRow.appendChild(headerEndpoint);
+                headerRow.appendChild(headerResult);
+                headerRow.appendChild(headerDate);
+                historyTable.appendChild(headerRow);
+
+                // remplis le tableau avec les données
+                history.forEach(entry => {
+                    const row = document.createElement("tr");
+                    const endpointCell = document.createElement("td");
+                    endpointCell.textContent = entry.endpoint;
+                    const resultCell = document.createElement("td");
+                    resultCell.textContent = JSON.stringify(entry.result);
+                    const dateCell = document.createElement("td");
+                    dateCell.textContent = entry.date;
+                    row.appendChild(endpointCell);
+                    row.appendChild(resultCell);
+                    row.appendChild(dateCell);
+                    historyTable.appendChild(row);
+                });
+            }
+            getHistory();
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img src="calendrier.png" alt="Logo calendrier">
+            <a href="index.html">Accueil</a>
+        </nav>
+    </header>
+    <main>
+        <section id="contact" class="section-contact">
+            <h2>Historique des requêtes</h2>
+            <table id="history-table"></table>
+        </section>
+    </main>
+</body>
+
+</html>

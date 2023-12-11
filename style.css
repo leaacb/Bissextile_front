@@ -1,0 +1,167 @@
+*{
+    margin : 0
+}
+
+
+
+body {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.5em;
+    background-color: #f1e9d7;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1373' height='450' preserveAspectRatio='none' viewBox='0 0 1373 450'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1017%26quot%3b)' fill='none'%3e%3crect width='1373' height='450' x='0' y='0' fill='rgba(255%2c 233%2c 218%2c 1)'%3e%3c/rect%3e%3cpath d='M0%2c324.418C81.569%2c338.841%2c168.701%2c415.71%2c238.845%2c371.65C308.757%2c327.736%2c280.747%2c217.078%2c299.053%2c136.573C313.233%2c74.214%2c344.481%2c15.07%2c334.285%2c-48.063C324.175%2c-110.663%2c281.893%2c-160.477%2c242.994%2c-210.555C202.009%2c-263.318%2c157.84%2c-310.588%2c101.942%2c-347.182C27.698%2c-395.785%2c-46.183%2c-467.554%2c-134.36%2c-457.589C-223.298%2c-447.538%2c-302.185%2c-376.754%2c-342.681%2c-296.935C-380.829%2c-221.744%2c-350.956%2c-132.908%2c-341.598%2c-49.114C-334.44%2c14.978%2c-320.435%2c75.449%2c-294.5%2c134.494C-268.211%2c194.347%2c-245.038%2c260.371%2c-190.1%2c295.801C-135.134%2c331.249%2c-64.406%2c313.029%2c0%2c324.418' fill='%23ffdbc2'%3e%3c/path%3e%3cpath d='M1373 1005.075C1476.396 999.556 1580.584 959.6 1652.834 885.4300000000001 1719.511 816.982 1709.1390000000001 708.5409999999999 1747.228 620.904 1784.337 535.521 1883.106 470.647 1873.346 378.06100000000004 1863.595 285.567 1759.657 238.02 1699.397 167.175 1638.44 95.50999999999999 1604.471-5.86099999999999 1517.101-40.76299999999998 1427.857-76.41399999999999 1329.382-38.867999999999995 1235.546-18.124000000000024 1135.086 4.084000000000003 1015.0899999999999 3.8530000000000086 951.043 84.37200000000001 887.092 164.76999999999998 904.336 282.102 915.508 384.223 924.7629999999999 468.818 985.029 534.544 1009.219 616.133 1038.909 716.271 1001.937 840.087 1073.284 916.3679999999999 1145.926 994.034 1266.808 1010.744 1373 1005.075' fill='%23fff7f2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1017'%3e%3crect width='1373' height='450' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");}
+
+header, footer{
+    padding : 15px 22px;
+}
+.accueil-photos{
+    display: flex;
+    justify-content: center;
+     align-items: center;
+     margin-top: 50px;
+     margin-bottom:50px;
+}
+
+em, h1{
+    color : #BC8F8F; 
+    text-decoration: none;
+}
+
+.accueil-introduction {
+    color : #596e79; 
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    align-items: center;
+    margin: auto;
+    margin-top : 100px
+  }
+  .accueil-introduction h1 {
+    margin-bottom: 15px;
+  }
+  
+  .accueil-introduction p, ul{
+    margin-bottom: 50px;
+    font-size: 1.2em;
+  }
+
+  .accueil-introduction div {
+    padding-right: 80px;
+  }
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+nav a{
+   margin-left: 1550px;
+  }
+
+  .cta {
+    font-size: 1em;
+    display: inline-block;
+    justify-content: space-between;
+    background: linear-gradient(#f5c4b5, #f5e7e3);
+    color: #596e79;
+    border-radius: 50px;
+    padding : 20px 35px;
+    margin-left: 50px;
+    margin-bottom: 160px
+  }
+.cta:hover {
+  background: linear-gradient(#f5e7e3, #e5afa0);
+  text-decoration: none;
+}
+
+.lien-icone {
+    margin-left: 30px;
+  }
+  
+  .lien-icone:hover {
+    opacity: 0.5;
+  }
+
+
+  footer,
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: auto;
+  color: #596e79; ;
+}
+
+.form-annee {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.form-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+input,
+textarea {
+  padding: 15px;
+  border-radius: 3px;
+  border: none;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+input[type='submit'] {
+    width: 200px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+h2{
+  color :  #596e79; 
+}
+
+#result{
+  align-items: center;
+  color: #596e79; ;
+
+}
+
+
+#history-table {
+  color: #596e79; 
+  background-color: white;
+  border: 1px solid #596e79; 
+  border-collapse: collapse;
+  width: 70%;
+  margin-top: 1em;
+  margin-left: 2em ;
+}
+
+#history-table th,
+#history-table td {
+  border: 1px solid #596e79; 
+  padding: 8px;
+  text-align: left;
+  color: #596e79; 
+}
+
+#history-table th {
+  background-color: white;
+}
+
+#history-table tr:nth-child(even) {
+  background-color: white; 
+}
+

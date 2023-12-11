@@ -1,0 +1,84 @@
+|<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Année bissextile</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&family=Montserrat:wght@200&display=swap" rel="stylesheet"> <!--utilise les événements JavaScript pour gérer l'interaction de l'utilisateur avec le formulaire-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {   //garantit que le script JavaScript est exécuté après que la structure HTML de la page soit prête.
+            const form = document.querySelector(".section-contact form"); // Cela sélectionne le premier élément <form> trouvé dans le document. 
+            form.addEventListener("submit", function (event) {     //Il écoute l'événement "submit", qui se déclenche lorsqu'un utilisateur soumet le formulaire en appuyant sur le bouton "ENVOYER"
+                event.preventDefault();
+                const result = document.getElementById("result");
+                result.textContent = null
+                const yearInput = document.getElementById("annee"); //sélectionne l'élément input avec l'id "annee" (qui est le champ d'entrée pour l'année) et le stocke dans la variable yearInput
+                const yearValue = yearInput.value; //Cela obtient la valeur actuelle entrée par l'utilisateur dans le champ d'entrée pour l'année et la stocke dans la variable yearValue
+
+        
+                post(yearValue); //est responsable de l'envoi de la requête à l'API avec cette valeur.
+            });
+
+            function post(year) {
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", 'http://127.0.0.1:8000/api/is-bissextile', true);
+                xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        console.log('xhr.status:', xhr.status); // Ajout d'un log pour voir le statut de la réponse
+                        console.log('xhr.responseText:', xhr.responseText); // Ajout d'un log pour voir la réponse
+
+                        if (xhr.status === 200) {
+                            var response = JSON.parse(xhr.responseText);
+                            const isBissextile = response.isbissextile;
+
+                            console.log('isBissextile:', isBissextile); // Ajout d'un log pour voir la valeur de isBissextile
+                            const resultDiv = document.getElementById("result");
+                            console.log('resultDiv:', resultDiv);
+                            console.log('Message à afficher:', isBissextile ? "L'année est bissextile." : "L'année n'est pas bissextile.");
+
+                            // Update the paragraph with the result
+        
+                            resultDiv.textContent = isBissextile ? year + " : L'année est bissextile." : year + " : L'année n'est pas bissextile.";
+                        }
+                    }
+                };
+
+                // Send the request with data to post
+                xhr.send(JSON.stringify({
+                    "value": year
+                }));
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav>
+                <img src="calendrier.png" alt="Logo calendrier">>
+                <a href="index.html">Accueil</a>
+        </nav>
+    </header>
+    <main>
+        <section id="contact" class="section-contact">
+            <h2>Entrez une année </h2>
+            <form>
+                <div class="form-annee">
+                    <div class="form-column">
+                        <label for="annee"> Année</label>
+                        <input type="number" name="annee" id="annee">
+                    </div>
+                </div>
+                <input type="submit" value="ENVOYER" class="cta">
+            </form>
+            <div id="result">       
+            </div>
+        </section>
+    </main>
+</body>
+</html>
